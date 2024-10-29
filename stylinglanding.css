@@ -1,0 +1,444 @@
+/* Global styles */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: 'White Rabbit', sans-serif;
+  background: linear-gradient(to right, #0e0e28, #09163a, #260f47);
+ /* Dark celestial gradient */
+  color: #FFFFFF;
+ /* White text for better visibility */
+  position: relative;
+ /* Relative positioning for body */
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(112, 83, 255, 0.134);
+  z-index: 100;
+ /* Ensure header is on top */
+  transition: top 0.3s;
+ /* Smooth transition */
+  border-radius: 10px;
+ /* Rounded corners for aesthetic */
+}
+nav {
+  margin-right: 15px;
+ /* Brings the whole nav a bit closer to the right */
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+ /* Removes extra margin */
+  padding-right: 5px;
+ /* Adds a bit of space on the right */
+}
+nav ul li {
+  padding-right: 20px;
+ /* Slightly reduces padding between items */
+}
+nav ul li a {
+  text-decoration: none;
+  color: #FFFFFF;
+ /* White text for header links */
+  font-size: 1.5rem;
+ /* Increased font size */
+  display: flex;
+  align-items: center;
+  text-shadow: 0 0 15px rgba(135, 206, 235, 1), 0 0 30px rgba(135, 206, 235, 0.5);
+ /* Glow effect */
+}
+.icon {
+  margin-right: 5px;
+  width: 20px;
+  filter: drop-shadow(0px 0px 2px #86A8E7);
+ /* Reduced glow effect */
+}
+/* Larger logo icon on the left */
+.logo-icon {
+  width: 80px;
+ /* Increased logo size */
+  margin: 0 30px;
+ /* Combined margin settings */
+  animation: glowAnimation 2s infinite;
+ /* Animation applied here */
+}
+/* Keyframes for the glowing animation */
+@keyframes glowAnimation {
+  0%, 100% {
+      filter: drop-shadow(0px 0px 10px rgb(173, 229, 255));
+     /* Initial and final glow */
+ }
+  50% {
+      filter: drop-shadow(0px 0px 15px rgb(211, 144, 255));
+     /* Midway glow */
+ }
+}
+/* Centered logo and subtitle */
+.center-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+  text-align: center;
+}
+/* Particle effect around the logo */
+@keyframes stardust {
+  from {
+      transform: scale(1) translate(-50%, -50%) rotate(0deg);
+      opacity: 0.5;
+ }
+  to {
+      transform: scale(1.5) translate(-50%, -50%) rotate(360deg);
+      opacity: 0;
+ }
+}
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+ /* Ignore mouse events */
+  overflow: hidden;
+  z-index: -1;
+ /* Ensure particles are behind other content */
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(135, 206, 235, 0.8);
+ /* Light blue color */
+  box-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
+  animation: float 5s linear infinite;
+ /* Float animation */
+  opacity: 0.3;
+ /* Slight opacity */
+}
+/* Adjusted particle colors */
+.particle:nth-child(1) {
+  background-color: #7F7FD5;
+}
+.particle:nth-child(2) {
+  background-color: #86A8E7;
+}
+.particle:nth-child(3) {
+  background-color: #d3ecea;
+}
+.particle:nth-child(4) {
+  background-color: #7F7FD5;
+}
+.particle:nth-child(5) {
+  background-color: #86A8E7;
+}
+.particle:nth-child(6) {
+  background-color: #d3ecea;
+}
+/* Logo and subtitle animations */
+.title-img, .subtitle {
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+.title-img {
+  max-width: 1000px;
+  width: 100%;
+  animation: fadeInBounce 1s ease-out forwards;
+  filter: drop-shadow(0px 0px 10px #7F7FD5);
+ /* Celestial glow */
+}
+.subtitle {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  background: linear-gradient(45deg, #7F7FD5, #d3ecea);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-top: 10px;
+  margin-bottom: 10px;
+ /* Adjust this as needed */
+  animation: colorFadeIn 1s ease-in-out 0.8s forwards;
+  filter: drop-shadow(0px 0px 6px #86A8E7);
+  text-align: center;
+ /* Center the subtitle */
+}
+/* Keyframes for bounce, fade-in, and celestial glow */
+@keyframes fadeInBounce {
+  0% {
+      opacity: 0;
+      transform: scale(0.8) rotate(-10deg);
+ }
+  50% {
+      opacity: 1;
+      transform: scale(1.05) rotate(0deg);
+ }
+  100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+ }
+}
+@keyframes colorFadeIn {
+  0% {
+      opacity: 0;
+      color: #86A8E7;
+ }
+  50% {
+      opacity: 1;
+      color: #FFFFFF;
+ }
+  100% {
+      color: #FFFFFF;
+      opacity: 1;
+ }
+}
+/* Media queries */
+@media (max-width: 768px) {
+  .title-img {
+      max-width: 80%;
+ }
+  header {
+      padding: 10px;
+ }
+}
+@media (max-width: 480px) {
+  .title-img {
+      max-width: 70%;
+ }
+  nav ul li {
+      padding-right: 20px;
+ }
+}
+/* Section styles for scrolling targets */
+section {
+  padding: 100px 20px;
+  margin: 20px 0;
+ /* Increased margin for more space */
+  text-align: center;
+}
+section#about, section#works, section#contacts {
+  background: none;
+}
+.section-divider {
+  width: 100%;
+ /* Full width */
+  height: 300px;
+ /* Larger appearance */
+  max-width: 1100px;
+ /* For larger displays */
+  display: block;
+  background-image: url("png's/divider.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0px 0px 15px rgba(135, 206, 235, 0.8));
+ /* Glow effect */
+  position: relative;
+  z-index: 5;
+ /* Ensure on top */
+ margin-top: auto;
+ margin-bottom: 00px; /* Add this line to increase space below */
+}
+.about-image {
+  display: block;
+  position: relative;
+  left: -100px; /* Adjust this value as needed */
+  max-width: 80%;
+  height: auto;
+  filter: drop-shadow(0px 0px 10px #7F7FD5);
+}
+body, footer {
+  margin: 0;
+}
+/* Wrap main content */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content {
+  flex-grow: 1;
+}
+footer {
+  position: relative;
+ /* Changed to relative */
+  margin-top: 0;
+ /* No margin needed here */
+  left: 0;
+ /* Align to the left */
+  right: 0;
+ /* Stretch across */
+  z-index: 10;
+ /* Ensure footer is on top */
+  background: rgba(112, 83, 255, 0.134);
+ /* Same background as header */
+  padding: 20px 20px;
+ /* Padding around footer content */
+  border-radius: 10px;
+ /* Rounded corners for aesthetic */
+  display: flex;
+  flex-direction: column;
+ /* Stack items vertically */
+  align-items: flex-start;
+ /* Align items to the left */
+  filter: drop-shadow(0px 0px 10px rgba(135, 206, 235, 0.8));
+ /* Glow effect */
+  margin-top: 0;
+ /* Ensures footer is flush */
+}
+#contacts {
+  padding: 0;
+ /* No padding on the top */
+  margin: 0;
+ /* No margin to push it down */
+  position: relative;
+  min-height: 100vh;
+ /* Maintain height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+ /* Ensure footer is pushed down */
+}
+/* Adjusting Contact Item Styles */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+ /* Stack items vertically */
+}
+.footer-link {
+  color: #FFFFFF;
+ /* White text */
+  text-decoration: none;
+ /* No underline */
+  font-size: 1rem;
+ /* Font size */
+  margin-bottom: 10px;
+ /* Space between links */
+  display: flex;
+  align-items: center;
+ /* Center icon and text */
+  text-shadow: 0 0 15px rgba(135, 206, 235, 1), 0 0 30px rgba(135, 206, 235, 0.5);
+ /* Glow effect */
+}
+.footer-link img.icon {
+  margin-right: 8px;
+ /* Space between icon and text */
+}
+/* Contact Item Styles */
+.contact-item {
+  display: flex;
+  align-items: center;
+ /* Center items vertically */
+  margin-bottom: 10px;
+ /* Space between items */
+  font-size: 1rem;
+ /* Font size */
+  color: #FFFFFF;
+ /* White text */
+  text-shadow: 0 0 15px rgba(135, 206, 235, 1), 0 0 30px rgba(135, 206, 235, 0.5);
+ /* Glow effect */
+}
+.contact-item img {
+  margin-right: 8px;
+ /* Space between icon and text */
+  width: 20px;
+ /* Icon size */
+  height: 20px;
+ /* Icon size */
+}
+/* Contact Links Styles */
+.contact-links {
+  display: flex;
+ /* Use Flexbox to center */
+  flex-direction: column;
+ /* Stack links vertically */
+  align-items: center;
+ /* Center items */
+  margin: 20px 0;
+ /* Space above and below the links */
+}
+.contact-links a {
+  font-family: 'White Rabbit', sans-serif;
+ /* Use White Rabbit font */
+  color: #FFFFFF;
+ /* White text */
+  text-shadow: 0 0 15px rgba(135, 206, 235, 1), 0 0 30px rgba(135, 206, 235, 0.5);
+ /* Glow effect */
+  font-size: 1.5rem;
+ /* Adjust font size as needed */
+  text-decoration: none;
+ /* Remove underline */
+  text-align: center;
+ /* Center the text */
+  margin: 200px 0;
+ /* Adjusts the space above and below the links */
+ margin-bottom: 100px;
+ margin-top: 20px;
+}
+.contact-links a:hover {
+  text-shadow: 0 0 25px rgba(135, 206, 235, 1), 0 0 40px rgba(135, 206, 235, 0.5);
+ /* Enhanced glow on hover */
+}
+
+/* My Works Section Styles */
+#works h2 {
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 30px;
+  padding: 0 10%;
+  justify-items: center;
+}
+
+.work-item {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-item img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-item p {
+  font-family: 'White Rabbit', sans-serif;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.work-item:hover img {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(135, 206, 235, 0.8);
+}
+
+.work-item:hover p {
+  color: #86A8E7; /* Subtle glow effect on hover */
+  text-shadow: 0px 0px 8px rgba(135, 206, 235, 0.8);
+}
+
+#works h2 {
+  font-size: 2.5rem; /* Adjust size as needed */
+  font-family: 'White Rabbit', sans-serif;
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(135, 206, 235, 1), 0 0 20px rgba(135, 206, 235, 0.5); /* Glow effect */
+  margin-bottom: 40px; /* Add more space below the title */
+}
+

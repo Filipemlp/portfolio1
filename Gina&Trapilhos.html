@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gina&Trapilhos</title>
+  <style>
+    /* Global Styles */
+    body {
+        overflow: hidden; /* Prevent scrolling */
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(to right, #0e0e28, #09163a, #260f47);
+        color: #FFFFFF;
+    }
+
+    /* Particles Background */
+    .particles-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+    }
+
+    .particle {
+        position: absolute;
+        border-radius: 50%;
+        background-color: rgba(135, 206, 235, 0.8);
+        box-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
+        opacity: 0.3;
+        animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) scale(0.5); }
+        50% { transform: translateY(-20px) scale(0.8); }
+        100% { transform: translateY(0) scale(0.5); }
+    }
+
+    .work-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%; /* Ensure it takes the full height */
+        z-index: 5; /* Above particles */
+    }
+
+    .work-image {
+        max-width: 90vw; /* Increase the width to 90% of the viewport */
+        max-height: 90vh; /* Increase the height to 90% of the viewport */
+        height: auto;
+        width: auto;
+        filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.8)); /* Optional glow effect */
+        margin-top: 1cm; /* Move the image down by 1cm */
+        transition: transform 0.3s ease; /* Transition for pop effect */
+    }
+
+    /* Canvas for Mouse Trail */
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none; /* Prevent interaction */
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles Background -->
+  <div class="particles-container"></div>
+
+  <!-- Content Section with Work Image -->
+  <div class="work-content">
+    <img src="workg's/ginainfo.png" alt="Chuc Hospital Poster" class="work-image" id="workImage">
+  </div>
+
+  <!-- Canvas for drawing the trail -->
+  <canvas id="trailCanvas"></canvas>
+
+  <script>
+    // Particle animation code
+    const particlesCount = 50;
+    const particleContainer = document.querySelector('.particles-container');
+
+    for (let i = 0; i < particlesCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 5 + 5 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.top = Math.random() * 100 + 'vh';
+        particle.style.left = Math.random() * 100 + 'vw';
+        particleContainer.appendChild(particle);
+    }
+
+    // Canvas setup for mouse trail
+    const canvas = document.getElementById('trailCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let lastX = 0;
+    let lastY = 0;
+    let isDrawing = false;
+    const trailLength = 20; // Number of segments in the trail
+    const trailSegments = []; // Array to hold the trail segments
+
+    // Draw line on mouse move
+    document.addEventListener('mousemove', (e) => {
+        // Set current position
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // If this is the first movement, set the last position
+        if (!isDrawing) {
+            lastX = x;
+            lastY = y;
+            isDrawing = true;
+        }
+
+        // Add the current position to the trail
+        trailSegments.push({ x: x, y: y });
+
+        // Limit the length of the trail
+        if (trailSegments.length > trailLength) {
+            trailSegments.shift(); // Remove the oldest segment
+        }
+
+        // Clear the canvas and redraw the trail
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+        // Draw the trail as a fading line
+        ctx.lineWidth = 3; // Line width
+        ctx.lineCap = 'round'; // Rounded ends
+        ctx.beginPath();
+
+        // Move to the first point
+        ctx.moveTo(trailSegments[0].x, trailSegments[0].y);
+
+        // Draw lines between each point
+        trailSegments.forEach((segment, index) => {
+            // Calculate fading based on the index of the segment
+            const alpha = Math.max(0, 1 - (index / trailLength)); // Fade out the segments towards the end
+            ctx.strokeStyle = `rgba(135, 206, 235, ${alpha})`; // Use alpha for fading
+            ctx.lineTo(segment.x, segment.y);
+        });
+
+        ctx.stroke();
+    });
+
+    // Reset lastX and lastY on mouse leave
+    document.addEventListener('mouseleave', () => {
+        isDrawing = false; // Stop drawing when mouse leaves
+        trailSegments.length = 0; // Clear the trail
+    });
+
+    // Update the canvas continuously
+    const animate = () => {
+        requestAnimationFrame(animate); // Loop
+    };
+    animate();
+
+    // Resize the canvas when the window is resized
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    // Image pop effect on hover
+    const workImage = document.getElementById('workImage');
+    workImage.addEventListener('mouseenter', () => {
+        workImage.style.transform = 'scale(1.05)'; // Scale up on hover
+    });
+
+    workImage.addEventListener('mouseleave', () => {
+        workImage.style.transform = 'scale(1)'; // Scale down when not hovering
+    });
+  </script>
+</body>
+</html>

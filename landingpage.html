@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="./stylinglanding.css">
+  <link href="https://fonts.googleapis.com/css2?family=White+Rabbit&amp;display=swap" rel="stylesheet">
+  <style>
+        /* Global Styles */
+        body {
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            margin: 0; /* Remove default margin */
+            display: flex; /* Flexbox layout for body */
+            flex-direction: column; /* Stack items vertically */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
+        }
+
+        /* Header Styles */
+        header {
+            transition: top 0.3s; /* Smooth transition */
+            z-index: 10; /* Ensure header is on top */
+            position: fixed; /* Fixed header */
+            top: 0; /* Set to top for visibility */
+            width: 100%; /* Full width */
+        }
+
+        /* Footer Styles */
+        footer {
+            position: relative; /* Changed to relative */
+            margin-top: 0; /* No margin needed here */
+            left: 0; /* Align to the left */
+            right: 0; /* Stretch across */
+            z-index: 10; /* Ensure footer is on top */
+            background: rgba(112, 83, 255, 0.134); /* Same background as header */
+            padding: 10px 20px; /* Padding around footer content */
+            border-radius: 10px; /* Rounded corners for aesthetic */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the left */
+            filter: drop-shadow(0px 0px 10px rgba(135, 206, 235, 0.8)); /* Glow effect */
+        }
+
+        /* Contact Item Styles */
+        .contact-item {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            margin-bottom: 10px; /* Space between items */
+            font-size: 1rem; /* Font size */
+            color: #FFFFFF; /* White text */
+            text-shadow: 0 0 15px rgba(135, 206, 235, 1), 0 0 30px rgba(135, 206, 235, 0.5); /* Glow effect */
+        }
+
+        .contact-item img {
+            margin-right: 8px; /* Space between icon and text */
+            width: 20px; /* Icon size */
+            height: 20px; /* Icon size */
+        }
+
+        /* Particle Styles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Behind other elements */
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(135, 206, 235, 0.8);
+            box-shadow: 0 0 10px rgba(135, 206, 235, 0.8);
+            animation: float 5s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(0.5); }
+            50% { transform: translateY(-20px) scale(0.8); }
+            100% { transform: translateY(0) scale(0.5); }
+        }
+
+        /* Subtitle Styles */
+        .subtitle {
+            font-size: 1.5rem;
+            color: transparent;
+            background: linear-gradient(45deg, #7F7FD5, #d3ecea);
+            -webkit-background-clip: text;
+            margin-top: 10px;
+            text-align: center;
+            filter: drop-shadow(0px 0px 6px #86A8E7);
+            position: relative;
+            z-index: 5; /* Ensure on top */
+        }
+
+        .subtitle-line {
+            white-space: nowrap;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        /* Divider Styles */
+        .section-divider {
+            width: 100%; /* Full width */
+            height: 300px; /* Larger appearance */
+            max-width: 1100px; /* For larger displays */
+            margin: 40px auto; /* Center and add spacing */
+            display: block;
+            background-image: url("png's/divider.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0px 0px 15px rgba(135, 206, 235, 0.8)); /* Glow effect */
+            position: relative;
+            z-index: 5; /* Ensure on top */
+        }
+
+        /* About Me Image Style */
+        .about-image {
+            display: block; /* Center the image */
+            margin: 0 auto; /* Center alignment */
+            width: 100%; /* Cover the section */
+            height: auto; /* Maintain aspect ratio */
+        }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#"><img src="png's/logo%20icon%20png.png" alt="diamond" class="logo-icon"></a>
+    <nav>
+      <ul>
+        <li>
+          <a href="#about"><img src="png's/staryu1.png" alt="blink" class="icon"> About Me</a>
+        </li>
+        <li>
+          <a href="#works"><img src="png's/staryu1.png" alt="blink" class="icon"> My Works</a>
+        </li>
+        <li>
+          <a href="#contacts"><img src="png's/staryu1.png" alt="blink" class="icon"> Contacts</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div id="top" class="center-logo" style="padding-top: 100px;">
+    <img src="png's/Portfolio%20PNG.png" alt="Portfolio Title" class="title-img">
+    <p class="subtitle"><span class="subtitle-line">Hello! I'm Filipe, a Design Student based in Portugal,<br>
+    and this is my Portfolio, make yourself comfortable.</span></p>
+  </div>
+  <div class="section-divider"></div>
+  <section id="about">
+    <img src="png's/about%20me.png" alt="About Me" class="about-image">
+  </section>
+  <div class="section-divider"></div>
+  
+  <section id="works">
+    <h2>My Works</h2>
+    <div class="works-grid">
+      <a href="ChucHospitalPoster.html" class="work-item">
+        <img src="workg's/Chuc.png" alt="Chuc Hospital Poster">
+        <p>ChucHospitalPoster</p>
+      </a>
+      <a href="Gina&Trapilhos.html" class="work-item">
+        <img src="workg's/gina.png" alt="Gina & Trapilhos">
+        <p>Gina&Trapilhos</p>
+      </a>
+      <a href="Kroma.html" class="work-item">
+        <img src="workg's/kromaning.png" alt="Kroma">
+        <p>Kroma</p>
+      </a>
+      <a href="MonstersMagazine.html" class="work-item">
+        <img src="workg's/Peter Saville Capa.png" alt="Monsters Magazine">
+        <p>Monsters Magazine</p>
+      </a>
+      <a href="ParvaClothing.html" class="work-item">
+        <img src="workg's/Parva.png" alt="Parva Clothing">
+        <p>ParvaClothing</p>
+      </a>
+      <a href="Radioheads.html" class="work-item">
+        <img src="workg's/radioning.png" alt="Radioheads">
+        <p>Radioheads</p>
+      </a>
+    </div>
+  </section>
+  
+  <div class="section-divider"></div>
+  <section id="contacts">
+    <div class="contact-links">
+        <a href="https://www.instagram.com/filipemlp/?igsh=Ym0weHBiMWV1bGll" class="contact-item">
+            <img src="png's/staryu1.png" alt="Instagram icon" class="icon"> Instagram
+        </a>
+        <a href="https://www.tiktok.com/@f1lsomn1a" class="contact-item">
+            <img src="png's/staryu1.png" alt="TikTok icon" class="icon"> TikTok
+        </a>
+        <a href="https://discordapp.com/users/filipemlp" class="contact-item">
+            <img src="png's/staryu1.png" alt="Discord icon" class="icon"> Discord
+        </a>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="tel:+351910878768" class="footer-link contact-item">
+                <img src="png's/staryu1.png" alt="icon" class="icon"> Phone (+351) 910878768
+            </a>
+            <a href="mailto:filipe.mcerqueira@gmail.com" class="footer-link contact-item">
+                <img src="png's/staryu1.png" alt="icon" class="icon"> E-Mail filipe.mcerqueira@gmail.com
+            </a>
+        </div>
+    </footer>
+</section>
+  <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            header.style.top = currentScroll > lastScrollTop ? "-100px" : "0"; // Hide header on scroll down
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For mobile or negative scrolling
+        });
+
+        // Ensure the page scrolls to the top on refresh
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                window.scrollTo(0, 0);
+            }, 0);
+        });
+  </script> 
+  <script>
+
+
+        const particlesCount = 50;
+        const particleContainer = document.createElement('div');
+        particleContainer.className = 'particles-container';
+        document.body.appendChild(particleContainer);
+
+        for (let i = 0; i < particlesCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 5 + 5 + 'px'; // Random width
+            particle.style.height = particle.style.width; // Keep it circular
+            particle.style.top = Math.random() * 100 + 'vh'; // Random vertical position
+            particle.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            particleContainer.appendChild(particle);
+        }
+  </script>
+</body>
+</html>
